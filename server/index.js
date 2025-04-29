@@ -1,7 +1,9 @@
 const express = require('express');  // instance of express
 const app = express();
+const cors = require('cors');
 
-app.use(express.json())
+app.use(express.json());
+app.use(cors());
 
 const db = require('./models');     // create the tables in models/
 

@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         username: {
             type: DataTypes.STRING,
+            len: [3,15],
             allowNull: false,
         },
     });
