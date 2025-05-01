@@ -1,6 +1,7 @@
 import './css/App.css';
 import './css/Home.css';
-import './css/createPost.css';
+import './css/CreatePost.css';
+import './css/Post.css';
 
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from './pages/Home';
