@@ -53,7 +53,7 @@
 }
 
 /* Comments section (right side on desktop) */
-.comments {
+.commentsContainer {
   background-color: #1b263b;
   border: 1px solid #415a77;
   border-radius: 12px;

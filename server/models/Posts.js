@@ -1,20 +1,34 @@
 // create a table named "Posts"
 module.exports = (sequelize, DataTypes) => {
-    const Posts = sequelize.define("Posts", {
-        title: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        postText: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        username: {
-            type: DataTypes.STRING,
-            len: [3,15],
-            allowNull: false,
-        },
-    });
+  const Posts = sequelize.define("Posts", {
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1,50],
+      }
+    },
+    postText: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1,500],
+      }
+    },
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [3,15],
+      }
+    },
+  });
 
-    return Posts;
+  Posts.associate = (models) => {
+    Posts.hasMany(models.Comments, {
+      onDelete: "cascade",
+    });
+  };
+
+  return Posts;
 };
