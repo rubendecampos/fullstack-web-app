@@ -26,7 +26,11 @@ function Login() {
       } else {
         alert("Logged in successfully");
         localStorage.setItem("accessToken", response.data.token);
-        setAuthState(true);
+        setAuthState({
+          username: response.data.username,
+          id: response.data.id,
+          status: true,
+        });
         navigate("/");
       }
       console.log(response.data);

@@ -14,23 +14,32 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function App() {
-  const [authState, setAuthState] = useState(false);
+  const resetAuthState = {
+    username: "",
+    id: -1,
+    status: false,
+  }
+  const [authState, setAuthState] = useState(resetAuthState);
 
   useEffect(() => {
     axios.get('http://localhost:3001/auth', { headers: {
       accessToken: localStorage.getItem("accessToken")
     }}).then((response) => {
       if(response.data.error) {
-        setAuthState(false);
+        setAuthState(resetAuthState);
       } else {
-        setAuthState(true);
+        setAuthState({
+          uername: response.data.username,
+          id: response.data.id,
+          status: true,
+        });
       }
     })
   }, []);
 
   const logout = () => {
     localStorage.removeItem("accessToken");
-    setAuthState(false);
+    setAuthState(resetAuthState);
   };
 
   return (
@@ -39,7 +48,7 @@ function App() {
         <Router>
           <Link to="/"> Home </Link>
           <Link to="/createpost"> Create A Post </Link>
-          {!authState ? (
+          {!authState.status ? (
             <>
               <Link to="/login"> Login </Link>
               <Link to="/registration"> Sign Up </Link>

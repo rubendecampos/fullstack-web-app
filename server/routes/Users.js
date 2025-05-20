@@ -39,8 +39,8 @@ router.post('/login', async (req, res) => {
         username: user.username, id: user.id},
         "IMPORT_SECRET_CHANGE_LATER"
       );
-
-      res.json({ token: accessToken });
+      
+      res.json({ token: accessToken, username: user.username, id: user.id});
     }
   });
 });
