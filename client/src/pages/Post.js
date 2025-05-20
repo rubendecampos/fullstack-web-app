@@ -43,7 +43,7 @@ function Post() {
       PostId: id,
     }, {
       headers: {
-        accessToken: sessionStorage.getItem("accessToken"),
+        accessToken: localStorage.getItem("accessToken"),
       }
     }).then((response) => {
       if (response.data.error) {
@@ -78,7 +78,10 @@ function Post() {
         <div className="allComments">
           {postComments.map((value, key) => {
             return (
-              <div key={key} className="commentBody"> {value.commentBody} </div>
+              <div key={key} className="commentBody">
+                <label> @{value.username} </label>
+                {value.commentBody}
+              </div>
             )
           })}
         </div>

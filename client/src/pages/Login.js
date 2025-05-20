@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';   // for data validation
 import axios from 'axios';
+import { AuthContext } from '../helpers/AuthContext';
 
 function Login() {
   const navigate = useNavigate();
+  const { setAuthState } = useContext(AuthContext);
   
   const initialValues = {
     identifier: "",
@@ -23,7 +25,8 @@ function Login() {
         alert(response.data.error);
       } else {
         alert("Logged in successfully");
-        sessionStorage.setItem("accessToken", response.data.token);
+        localStorage.setItem("accessToken", response.data.token);
+        setAuthState(true);
         navigate("/");
       }
       console.log(response.data);

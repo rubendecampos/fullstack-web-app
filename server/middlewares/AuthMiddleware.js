@@ -11,6 +11,8 @@ const validateToken = (req, res, next) => {
 
   try {
     const validToken = verify(accessToken, "IMPORT_SECRET_CHANGE_LATER");
+    req.user = validToken;
+    
     if (validToken) {
       return next();
     }

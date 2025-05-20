@@ -7,6 +7,10 @@ module.exports = (sequelize, DataTypes) => {
           len: [1,250],
         }      
       },
+      username: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      }
   });
 
   return Comments;

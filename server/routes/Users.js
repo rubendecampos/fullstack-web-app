@@ -3,6 +3,7 @@ const router = express.Router();
 const { Users } = require('../models');
 const { Op } = require('sequelize');
 const bcrypt = require("bcrypt");
+const { validateToken } = require('../middlewares/AuthMiddleware');
 
 const { sign } = require('jsonwebtoken');
 
@@ -42,6 +43,10 @@ router.post('/login', async (req, res) => {
       res.json({ token: accessToken });
     }
   });
+});
+
+router.get('/', validateToken, (req, res) => {
+ res.json(req.user);
 });
 
 module.exports = router;
