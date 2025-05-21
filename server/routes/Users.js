@@ -40,11 +40,12 @@ router.post('/login', async (req, res) => {
         "IMPORT_SECRET_CHANGE_LATER"
       );
       
-      res.json({ token: accessToken, username: user.username, id: user.id});
+      res.json({ token: accessToken, username: user.username, id: user.id });
     }
   });
 });
 
+// simple get request to authenticate the user
 router.get('/', validateToken, (req, res) => {
  res.json(req.user);
 });

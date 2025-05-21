@@ -21,7 +21,7 @@ function App() {
   }
   const [authState, setAuthState] = useState(resetAuthState);
 
-  useEffect(() => {
+  useEffect( () => {
     axios.get('http://localhost:3001/auth', { headers: {
       accessToken: localStorage.getItem("accessToken")
     }}).then((response) => {
@@ -29,12 +29,12 @@ function App() {
         setAuthState(resetAuthState);
       } else {
         setAuthState({
-          uername: response.data.username,
+          username: response.data.username,
           id: response.data.id,
           status: true,
         });
       }
-    })
+    });
   }, []);
 
   const logout = () => {
@@ -56,6 +56,7 @@ function App() {
           ) : (
             <button onClick={logout}> Logout </button>
           )}
+          <label> {authState.username} </label>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/createpost" element={<CreatePost />} />
