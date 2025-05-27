@@ -21,7 +21,12 @@ function CreatePost() {
 
   const onSubmit = async (data) => {
     await axios.post("http://localhost:3001/posts", data=data).then( (response) => {
-      console.log(`New Post created by ${data.username}`)
+      if (!response.data.error) {
+        console.log(`New Post created by ${data.username}`)
+      } else {
+        alert(response.data.error);
+        console.log(response.data.error);
+      }
     });
     navigate("/")
   }
