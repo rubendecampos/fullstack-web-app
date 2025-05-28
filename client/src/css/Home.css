@@ -27,27 +27,52 @@
   border-color: #778da9;
 }
 
-/* TITLE */
-.post .title {
-  font-size: 1.5rem;
-  font-weight: bold;
+/* HEADER */
+.post .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   color: #e0e1dd;
   margin-bottom: 1rem;
+}
+
+.post .header .title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.like-btn {
+  display:flex;
+  align-items: center;
+}
+
+.like-btn .border-icon:hover {
+  color: darkred;
+}
+
+.like-btn .full-icon {
+  color: darkred;
+}
+
+.like-btn .full-icon:hover {
+  opacity: 80%;
 }
 
 /* BODY */
 .post .body {
   font-size: 1rem;
   line-height: 1.6;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   color: #c0c0c0;
 }
 
 /* FOOTER */
 .post .footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-size: 0.9rem;
   color: #a9bcd0;
-  text-align: right;
 }
 
 /* RESPONSIVE DESIGN */
