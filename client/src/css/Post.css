@@ -46,10 +46,21 @@
 
 /* Footer (username) */
 .singlePost .footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-size: 0.9rem;
   margin-top: 1rem;
   color: #a9bcd0;
-  text-align: right;
+}
+
+.singlePost .footer .right-side {
+  display:flex;
+  align-items: center;
+}
+
+.singlePost .delete-btn:hover {
+  opacity: 50%;
 }
 
 /* Comments section (right side on desktop) */

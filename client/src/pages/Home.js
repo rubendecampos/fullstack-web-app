@@ -22,7 +22,6 @@ function Home(){
       if (authState.status) {
         // filter trough each post and get only the post IDs from the posts
         // the user liked
-        console.log(postArray)
         setLikedPosts(postArray.filter((post) => {
           return post.Likes.some((like) => {return like.UserId === authState.id});
         }).map((post) => {return post.id}));
@@ -99,8 +98,8 @@ function Home(){
             </div>
             <div className="body"> {value.postText} </div>
             <div className="footer">
-              <div className="likes-nbr">{value.Likes.length} likes</div>
-              <div className="username">{value.username}</div>
+              <div> {value.Likes.length} likes</div>
+              <div> {value.username} </div>
             </div>
           </div>
         )
