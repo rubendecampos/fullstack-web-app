@@ -60,7 +60,7 @@ function Post() {
   const addComment = async () => {
     await axios.post("http://localhost:3001/comments", {
       commentBody: newComment,
-      PostId: id,
+      PostId: postObject.id,
     }, {
       headers: {
         accessToken: localStorage.getItem("accessToken"),
