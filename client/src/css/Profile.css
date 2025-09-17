@@ -1,0 +1,82 @@
+.profilePage {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 650px;
+}
+
+.basicInfo {
+  padding-left: 1rem;
+  gap: 1rem;
+}
+
+.listOfPosts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* POST CONTAINER */
+.post {
+  background-color: #1b263b;
+  border: 1px solid #415a77;
+  border-radius: 12px;
+  padding: 1.5rem;
+  width: 90%;
+  max-width: 600px;
+  min-width: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* HOVER EFFECT */
+.post:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  border-color: #778da9;
+}
+
+/* HEADER */
+.post .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #e0e1dd;
+  margin-bottom: 1rem;
+}
+
+.post .header .title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* BODY */
+.post .body {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  color: #c0c0c0;
+}
+
+/* FOOTER */
+.post .footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #a9bcd0;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 420px) {
+  .post {
+    min-width: unset;
+    width: 90%;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: None;
+}

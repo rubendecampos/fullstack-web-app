@@ -140,7 +140,9 @@ function Post() {
             </div>
           </div>
           <div className='right-side'> 
-            <div> {postObject.username} </div>
+            <div>
+              <a href={`/profile/${postObject.UserId}`}>{postObject.username}</a>
+            </div>
             {authState.username === postObject.username && (
               <DeleteForeverIcon className="delete-btn" onClick={() => {deletePost(postObject.id)}}/>
             )}

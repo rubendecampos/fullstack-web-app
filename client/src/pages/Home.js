@@ -99,7 +99,9 @@ function Home(){
             <div className="body"> {value.postText} </div>
             <div className="footer">
               <div> {value.Likes.length} likes</div>
-              <div> {value.username} </div>
+              <div>
+                <a href={`/profile/${value.UserId}`}> {value.username} </a>
+              </div>
             </div>
           </div>
         )

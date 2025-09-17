@@ -2,6 +2,7 @@ import './css/App.css';
 import './css/Home.css';
 import './css/CreatePost.css';
 import './css/Post.css';
+import './css/Profile.css';
 
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from './pages/Home';
@@ -62,7 +63,9 @@ function App() {
           ) : (
             <button onClick={logout}> Logout </button>
           )}
-          <label> {authState.username} </label>
+          <label>
+            <a href={`/profile/${authState.id}`}> {authState.username} </a>
+          </label>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/createpost" element={<CreatePost />} />

@@ -82,3 +82,8 @@
     width: 90%;
   }
 }
+
+a {
+  color: inherit;
+  text-decoration: None;
+}
