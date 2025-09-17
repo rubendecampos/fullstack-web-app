@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
+import * as Yup from 'yup';   // for data validation
 import axios from 'axios';
 
 function CreatePost() {
@@ -16,12 +16,20 @@ function CreatePost() {
   const validationSchema = Yup.object().shape({
     title: Yup.string().trim().required("Title is required"),
     postText: Yup.string().trim().required(),
-    username: Yup.string().trim().min(3).max(15).required("Username is not valid"),
   })
 
   const onSubmit = async (data) => {
-    await axios.post("http://localhost:3001/posts", data=data).then( (response) => {
-      console.log(`New Post created by ${data.username}`)
+    await axios.post(
+        "http://localhost:3001/posts",
+        data=data,
+        {headers: {accessToken: localStorage.getItem("accessToken")}}
+      ).then( (response) => {
+      if (!response.data.error) {
+        console.log(`New Post created by ${data.username}`)
+      } else {
+        alert(response.data.error);
+        console.log(response.data.error);
+      }
     });
     navigate("/")
   }
@@ -44,16 +52,11 @@ function CreatePost() {
           <label>Post:</label>
           <ErrorMessage name='postText' component="span" />
           <Field
+            as="textarea"
+            rows="5"
             id="inputCreatePost"
             name="postText"
             placeholder="Description..."
-          />
-          <label>Username:</label>
-          <ErrorMessage name='username' component="span" />
-          <Field
-            id="inputCreatePost"
-            name="username"
-            placeholder="Username..."
           />
           <button type="submit">Create Post</button>
         </Form>

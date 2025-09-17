@@ -26,7 +26,7 @@
   color: #c0c0c0;
 }
 
-.formContainer input {
+.formContainer input, textarea {
   padding: 0.8rem;
   border: 1px solid #778da9;
   border-radius: 8px;
@@ -37,11 +37,17 @@
   transition: border-color 0.2s ease;
 }
 
-.formContainer input:focus {
+.formContainer textarea {
+  resize: vertical;
+  min-height: 60px;
+  line-height: 1.5rem;
+}
+
+.formContainer :focus {
   border-color: #e0e1dd;
 }
 
-.formContainer input::placeholder {
+.formContainer ::placeholder {
   opacity: 0.8;
 }
 
